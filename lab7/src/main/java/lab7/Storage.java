@@ -43,6 +43,7 @@ public class Storage {
             }
         }
         if (System.currentTimeMillis() >= heartBeat){
+            heartBeat = System.currentTimeMillis() + 5000;
 
         }
     }

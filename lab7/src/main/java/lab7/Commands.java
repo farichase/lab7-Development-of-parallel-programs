@@ -16,10 +16,9 @@ public class Commands {
             return CommandType.GET;
         }
     }
-    public static enum CommandType {
+    public enum CommandType {
         GET,
-        SET,
-        CONNECT;
+        SET
     }
     public static String[] splitCommand(String com){
         return com.split(" ");
