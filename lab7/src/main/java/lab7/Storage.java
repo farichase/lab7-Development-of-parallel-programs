@@ -20,6 +20,10 @@ public class Storage {
         sendConnectCommand(dealer, start, end);
         while(!Thread.currentThread().isInterrupted()){
             ZMsg msg = ZMsg.recvMsg(dealer, false);
+            if (msg != null) {
+                String com = new String(msg.getLast().getData(), ZMQ.CHARSET);
+                
+            }
         }
     }
 }
