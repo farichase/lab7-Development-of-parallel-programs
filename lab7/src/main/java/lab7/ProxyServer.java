@@ -1,10 +1,11 @@
 package lab7;
 
 import org.zeromq.ZContext;
+import org.zeromq.ZMQ;
 
-public class Proxy {
+public class ProxyServer {
     public static void main(String[] args){
         ZContext context = new ZContext();
-        fr
+        ZMQ.Socket clientSocket =
     }
 }
