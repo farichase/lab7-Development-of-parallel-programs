@@ -11,7 +11,7 @@ public class Storage {
         ZContext context = new ZContext();
         ZMQ.Socket socket = context.createSocket(SocketType.DEALER);
         socket.connect(ADDR);
-        
+        socket.send()
 
     }
 }
