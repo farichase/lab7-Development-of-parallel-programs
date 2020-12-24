@@ -3,6 +3,7 @@ package lab7;
 import org.zeromq.SocketType;
 import org.zeromq.ZContext;
 import org.zeromq.ZMQ;
+import org.zeromq.ZMsg;
 
 
 public class Storage {
@@ -17,6 +18,8 @@ public class Storage {
         int start = Integer.parseInt(args[0]);
         int end = Integer.parseInt(args[1]);
         sendConnectCommand(dealer, start, end);
-
+        while(!Thread.currentThread().isInterrupted()){
+            ZMsg msg = ZMsg.recvMsg(dealer, false);
+        }
     }
 }
