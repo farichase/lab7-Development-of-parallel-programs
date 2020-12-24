@@ -64,6 +64,8 @@ public class ProxyServer {
                 }
                 if (type == Commands.CommandType.SET) {
                     key = Commands.getKey(com);
+                    isKeyValid = sendGetReq(key);
+                    
                 }
             }
             if (items.pollin(1)){
