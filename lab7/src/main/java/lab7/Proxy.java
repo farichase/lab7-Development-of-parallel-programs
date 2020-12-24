@@ -1,2 +1,4 @@
-package lab7;public class Proxy {
+package lab7;
+
+public class Proxy {
 }
