@@ -15,15 +15,18 @@ import java.util.List;
 public class ProxyServer {
     public static String ADDR1 = "tcp://localhost:8080";
     public static String ADDR2 = "tcp://localhost:9000";
+    public static List<Info> store;
+    public static Socket clientSocket;
+    public static Socket storageSocket;
 
     private static boolean sendGetReq(){
 
     }
     public static void main(String[] args){
-        List<Info> store = new ArrayList();
+        store = new ArrayList();
         ZContext context = new ZContext();
-        Socket clientSocket = context.createSocket(SocketType.ROUTER);
-        Socket storageSocket = context.createSocket(SocketType.ROUTER);
+        clientSocket = context.createSocket(SocketType.ROUTER);
+        storageSocket = context.createSocket(SocketType.ROUTER);
         clientSocket.bind(ADDR1);
         clientSocket.bind(ADDR2);
         Poller items = context.createPoller(2);
