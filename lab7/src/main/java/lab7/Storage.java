@@ -35,7 +35,8 @@ public class Storage {
                     msg.send(dealer);
                 }
                 if (type == Commands.CommandType.SET){
-                    Pair<Integer, Integer> setPar = Commands.
+                    Pair<Integer, Integer> setPar = Commands.getKeyValue(com);
+
                 }
             }
         }
