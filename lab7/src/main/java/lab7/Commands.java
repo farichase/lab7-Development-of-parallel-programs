@@ -22,7 +22,8 @@ public class Commands {
     public enum CommandType {
         GET,
         SET,
-        NOTIFY
+        NOTIFY,
+        CONNECT
     }
     public static String[] splitCommand(String com){
         return com.split(" ");
