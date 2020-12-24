@@ -9,6 +9,7 @@ import org.zeromq.ZMQ.Poller;
 import org.zeromq.ZMsg;
 import zmq.ZMQ;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProxyServer {
@@ -19,7 +20,7 @@ public class ProxyServer {
 
     }
     public static void main(String[] args){
-        List<Info>
+        List<Info> store = new ArrayList();
         ZContext context = new ZContext();
         Socket clientSocket = context.createSocket(SocketType.ROUTER);
         Socket storageSocket = context.createSocket(SocketType.ROUTER);
@@ -59,6 +60,9 @@ public class ProxyServer {
                 Commands.CommandType type = Commands.getCommandType(com)
                 if (type == Commands.CommandType.CONNECT){
                     Pair<Integer, Integer> range = Commands.getKeyValue(com);
+                    store.add(new Info(id, addr, range.getKey(), range.getValue(), System.currentTimeMillis()));
+                }
+                if (type == ){
 
                 }
 
