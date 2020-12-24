@@ -14,6 +14,6 @@ public class ProxyServer {
         clientSocket.bind(ADDR1);
         clientSocket.bind(ADDR2);
 
-        
+
     }
 }
