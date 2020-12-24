@@ -1,5 +1,6 @@
 package lab7;
 
+import javafx.util.Pair;
 import org.zeromq.SocketType;
 import org.zeromq.ZContext;
 import org.zeromq.ZFrame;
@@ -53,7 +54,7 @@ public class ProxyServer {
                 String com = new String(msg.getLast().getData(), ZMQ.CHARSET);
                 Commands.CommandType type = Commands.getCommandType()
                 if (type == Commands.CommandType.CONNECT){
-                    Pair<In>
+                    Pair<Integer, Integer> 
                 }
 
             }
