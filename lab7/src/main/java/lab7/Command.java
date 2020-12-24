@@ -1,2 +1,4 @@
-package lab7;public class Command {
+package lab7;
+
+public class Command {
 }
