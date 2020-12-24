@@ -16,7 +16,7 @@ public class Storage {
         dealer.send(Commands.setConnectCommand(start, end), 0);
     }
     private static void sendNotifyCommand(ZMQ.Socket dealer){
-        dealer.send()
+        dealer.send(Commands.setNotifyCommand(), 0);
     }
     public static void main(String[] args){
         Map<Integer, Integer> storage = new HashMap<>();
@@ -47,7 +47,7 @@ public class Storage {
         }
         if (System.currentTimeMillis() >= heartBeat){
             heartBeat = System.currentTimeMillis() + 5000;
-            sen
+            sendNotifyCommand(dealer);
         }
     }
 }
