@@ -26,9 +26,12 @@ public class ProxyServer {
         do {
             if (iterator.hasNext()) {
                 info = (Info)iterator.next();
+            } else {
+                return false;
             }
         } while (info.getStart() > key || key > info.getEnd());
-        
+        info.getAddress().send(storageSocket, 130);
+        return true;
     }
     public static void main(String[] args){
         store = new ArrayList();
