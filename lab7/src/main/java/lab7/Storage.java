@@ -1,5 +1,6 @@
 package lab7;
 
+import javafx.util.Pair;
 import org.zeromq.SocketType;
 import org.zeromq.ZContext;
 import org.zeromq.ZMQ;
@@ -33,7 +34,9 @@ public class Storage {
                     msg.getLast().reset(Commands.setResponseCommand(value == null ? "null " : Integer.toString(value)));
                     msg.send(dealer);
                 }
-                if (type == )
+                if (type == Commands.CommandType.SET){
+                    Pair<Integer, Integer> setPar = Commands.
+                }
             }
         }
     }
