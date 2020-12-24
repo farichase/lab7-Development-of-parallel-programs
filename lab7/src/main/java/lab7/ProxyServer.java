@@ -9,13 +9,17 @@ import org.zeromq.ZMQ.Poller;
 import org.zeromq.ZMsg;
 import zmq.ZMQ;
 
+import java.util.List;
+
 public class ProxyServer {
     public static String ADDR1 = "tcp://localhost:8080";
     public static String ADDR2 = "tcp://localhost:9000";
+
     private static boolean sendGetReq(){
 
     }
     public static void main(String[] args){
+        List<Info> 
         ZContext context = new ZContext();
         Socket clientSocket = context.createSocket(SocketType.ROUTER);
         Socket storageSocket = context.createSocket(SocketType.ROUTER);
@@ -52,9 +56,10 @@ public class ProxyServer {
                 ZFrame addr = msg.unwrap();
                 String id = new String(addr.getData(), ZMQ.CHARSET);
                 String com = new String(msg.getLast().getData(), ZMQ.CHARSET);
-                Commands.CommandType type = Commands.getCommandType()
+                Commands.CommandType type = Commands.getCommandType(com)
                 if (type == Commands.CommandType.CONNECT){
-                    Pair<Integer, Integer> 
+                    Pair<Integer, Integer> range = Commands.getKeyValue(com);
+
                 }
 
             }
