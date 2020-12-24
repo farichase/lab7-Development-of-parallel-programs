@@ -13,7 +13,10 @@ public class ProxyServer {
         ZMQ.Socket storageSocket = context.createSocket(SocketType.ROUTER);
         clientSocket.bind(ADDR1);
         clientSocket.bind(ADDR2);
+        
+        for (; !Thread.currentThread().isInterrupted(); ){
 
+        }
 
     }
 }
