@@ -62,7 +62,7 @@ public class ProxyServer {
                     Pair<Integer, Integer> range = Commands.getKeyValue(com);
                     store.add(new Info(id, addr, range.getKey(), range.getValue(), System.currentTimeMillis()));
                 }
-                if (type == ){
+                if (type == Commands.CommandType.NOTIFY){
 
                 }
 
