@@ -5,6 +5,7 @@ import org.zeromq.ZContext;
 import org.zeromq.ZMQ.Socket;
 import org.zeromq.ZMQ.Poller;
 import org.zeromq.ZMsg;
+import zmq.ZMQ;
 
 public class ProxyServer {
     public static String ADDR1 = "tcp://localhost:8080";
@@ -24,6 +25,14 @@ public class ProxyServer {
             ZMsg msg;
             if (items.pollin(0)){
                 msg = ZMsg.recvMsg(clientSocket);
+                String com = new String(msg.getLast().getData(), ZMQ.CHARSET);
+                Commands.CommandType type = Commands.getCommandType(com);
+                Integer key;
+                if (type == Commands.CommandType.GET){
+                    key = Commands.getKey(com);
+                    msg.getLast().reset(Commands.setResponseCommand());
+                    msg.send(clientSocket);
+                }
             }
         }
 
