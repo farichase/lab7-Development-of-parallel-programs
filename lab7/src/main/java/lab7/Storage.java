@@ -33,6 +33,7 @@ public class Storage {
                     msg.getLast().reset(Commands.setResponseCommand(value == null ? "null " : Integer.toString(value)));
                     msg.send(dealer);
                 }
+                if (type == )
             }
         }
     }
