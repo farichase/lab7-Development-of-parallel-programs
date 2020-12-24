@@ -22,7 +22,7 @@ public class Storage {
             ZMsg msg = ZMsg.recvMsg(dealer, false);
             if (msg != null) {
                 String com = new String(msg.getLast().getData(), ZMQ.CHARSET);
-                
+                Commands.CommandType type = Commands.get
             }
         }
     }
