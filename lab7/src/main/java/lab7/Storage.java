@@ -9,9 +9,11 @@ public class Storage {
     private static String ADDR = "tcp://localhost:9000";
     public static void main(String[] args){
         ZContext context = new ZContext();
-        ZMQ.Socket socket = context.createSocket(SocketType.DEALER);
-        socket.connect(ADDR);
-        socket.send()
+        ZMQ.Socket dealer = context.createSocket(SocketType.DEALER);
+        dealer.connect(ADDR);
+        int start = Integer.parseInt(args[0]);
+        int end = Integer.parseInt(args[1]);
+        
 
     }
 }
