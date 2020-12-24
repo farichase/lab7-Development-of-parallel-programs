@@ -23,6 +23,7 @@ public class Storage {
         int start = Integer.parseInt(args[0]);
         int end = Integer.parseInt(args[1]);
         sendConnectCommand(dealer, start, end);
+        long heartBeat = System.currentTimeMillis() + 5000;
         while(!Thread.currentThread().isInterrupted()){
             ZMsg msg = ZMsg.recvMsg(dealer, false);
             if (msg != null) {
@@ -40,6 +41,9 @@ public class Storage {
                     msg.destroy();
                 }
             }
+        }
+        if (System.currentTimeMillis() >= heartBeat){
+
         }
     }
 }
