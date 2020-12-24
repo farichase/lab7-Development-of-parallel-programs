@@ -34,7 +34,7 @@ public class ProxyServer {
                     msg.send(clientSocket);
                 }
                 if (type == Commands.CommandType.SET) {
-                    
+                    key = Commands.getKey(com);
                 }
             }
         }
