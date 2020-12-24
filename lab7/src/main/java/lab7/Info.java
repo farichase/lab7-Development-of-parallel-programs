@@ -42,5 +42,7 @@ public class Info {
     public void setEnd(int end){
         this.end = end;
     }
-    
+    public void setHeartBeat(long heartBeat){
+        
+    }
 }
