@@ -65,7 +65,11 @@ public class ProxyServer {
                 if (type == Commands.CommandType.SET) {
                     key = Commands.getKey(com);
                     isKeyValid = sendGetReq(key);
-                    
+                    if (!isKeyValid){
+                        msg.getLast().reset(Commands.setResponseCommand("Out of array"));
+                    } else {
+                        msg.getLast().reset(Commands.setResponseCommand("Well done"));
+                    }
                 }
             }
             if (items.pollin(1)){
