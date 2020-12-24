@@ -15,4 +15,19 @@ public class Info {
         this.end = end;
         this.heartBeat = heartBeat;
     }
+    public String getId(){
+        return this.id;
+    }
+    public ZFrame getAddress(){
+        return this.address;
+    }
+    public int getStart(){
+        return this.start;
+    }
+    public int getEnd(){
+        return this.end;
+    }
+    public long getHeartBeat(){
+        return this.heartBeat;
+    }
 }
