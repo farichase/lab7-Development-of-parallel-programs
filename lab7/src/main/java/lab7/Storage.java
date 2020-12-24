@@ -36,7 +36,8 @@ public class Storage {
                 }
                 if (type == Commands.CommandType.SET){
                     Pair<Integer, Integer> setPar = Commands.getKeyValue(com);
-
+                    storage.put(setPar.getKey(), setPar.getValue());
+                    msg.destroy();
                 }
             }
         }
