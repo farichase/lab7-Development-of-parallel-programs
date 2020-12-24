@@ -5,6 +5,9 @@ import org.zeromq.ZContext;
 import org.zeromq.ZMQ;
 import org.zeromq.ZMsg;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class Storage {
     private static String ADDR = "tcp://localhost:9000";
@@ -12,6 +15,7 @@ public class Storage {
         dealer.send(Commands.setConnectCommand(start, end), 0);
     }
     public static void main(String[] args){
+        Map<Integer, Integer> storage = new HashMap<>();
         ZContext context = new ZContext();
         ZMQ.Socket dealer = context.createSocket(SocketType.DEALER);
         dealer.connect(ADDR);
@@ -24,7 +28,10 @@ public class Storage {
                 String com = new String(msg.getLast().getData(), ZMQ.CHARSET);
                 Commands.CommandType type = Commands.getCommandType(com);
                 if (type == Commands.CommandType.GET) {
-                    Integer ke
+                    Integer key = Commands.getKey(com);
+                    Integer value = storage.get(key);
+                    msg.getLast().reset(Commands.setResponseCommand(value == null ? "null " : Integer.toString(value)));
+                    msg.send(dealer);
                 }
             }
         }
