@@ -10,6 +10,7 @@ import org.zeromq.ZMsg;
 import zmq.ZMQ;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ProxyServer {
@@ -19,8 +20,15 @@ public class ProxyServer {
     public static Socket clientSocket;
     public static Socket storageSocket;
 
-    private static boolean sendGetReq(){
-
+    private static boolean sendGetReq(Integer key){
+        Iterator iterator = store.iterator();
+        Info info = null;
+        do {
+            if (iterator.hasNext()) {
+                info = (Info)iterator.next();
+            }
+        } while (info.getStart() > key || key > info.getEnd());
+        
     }
     public static void main(String[] args){
         store = new ArrayList();
