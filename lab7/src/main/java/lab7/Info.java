@@ -30,4 +30,8 @@ public class Info {
     public long getHeartBeat(){
         return this.heartBeat;
     }
+    public void setId(String id){
+        this.id = id;
+    }
+    
 }
