@@ -13,7 +13,7 @@ public class Storage {
         dealer.connect(ADDR);
         int start = Integer.parseInt(args[0]);
         int end = Integer.parseInt(args[1]);
-        
+
 
     }
 }
