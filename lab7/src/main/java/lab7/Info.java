@@ -43,6 +43,6 @@ public class Info {
         this.end = end;
     }
     public void setHeartBeat(long heartBeat){
-        
+        this.heartBeat = heartBeat;
     }
 }
