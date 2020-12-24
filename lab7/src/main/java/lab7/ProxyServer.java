@@ -19,7 +19,7 @@ public class ProxyServer {
 
     }
     public static void main(String[] args){
-        List<Info> 
+        List<Info>
         ZContext context = new ZContext();
         Socket clientSocket = context.createSocket(SocketType.ROUTER);
         Socket storageSocket = context.createSocket(SocketType.ROUTER);
