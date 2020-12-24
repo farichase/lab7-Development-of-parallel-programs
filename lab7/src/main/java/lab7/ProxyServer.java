@@ -33,6 +33,9 @@ public class ProxyServer {
                     msg.getLast().reset(Commands.setResponseCommand());
                     msg.send(clientSocket);
                 }
+                if (type == Commands.CommandType.SET) {
+                    
+                }
             }
         }
 
