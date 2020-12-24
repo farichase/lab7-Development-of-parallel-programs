@@ -6,13 +6,16 @@ import javafx.util.Pair;
 public class Commands {
     private static String GET = "get";
     public static String setConnectCommand(int start, int end){
-        return "Connect" + start + " " + end;
+        return "CONNECT" + start + " " + end;
     }
     public static String setResponseCommand(String response){
-        return "Response: " + response;
+        return "RESPONSE: " + response;
+    }
+    public static String setNotifyCommand(){
+        return "NOTIFY";
     }
     public static Commands.CommandType getCommandType(String com){
-        if (com.contains(GET)) {
+        if (com.toLowerCase().contains(GET)) {
             return CommandType.GET;
         }
     }
