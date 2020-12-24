@@ -55,9 +55,9 @@ public class ProxyServer {
                 Boolean isKeyValid;
                 if (type == Commands.CommandType.GET){
                     key = Commands.getKey(com);
-                    isKeyValid =
+                    isKeyValid = sendGetReq(key);
                     if (!isKeyValid){
-
+                        msg.getLast().reset(Commands.setResponseCommand("Out of array"));
                     }
                     msg.getLast().reset(Commands.setResponseCommand());
                     msg.send(clientSocket);
