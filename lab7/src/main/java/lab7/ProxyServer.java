@@ -20,7 +20,6 @@ public class ProxyServer {
     public static List<Info> store;
     public static Socket clientSocket;
     public static Socket storageSocket;
-    private static final long TIMEOUT = 5000;
     private static final int CLIENT_SOCKET_NUMBER = 0;
     private static final int STORAGE_SOCKET_NUMBER = 1;
 
