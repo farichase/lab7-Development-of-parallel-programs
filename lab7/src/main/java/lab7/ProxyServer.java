@@ -92,7 +92,7 @@ public class ProxyServer {
                 }
                 if (type == Commands.CommandType.PUT) {
                     key = Commands.getKey(com);
-                    isKeyValid = sendGetReq(key, msg);
+                    isKeyValid = sendPutReq(key, msg);
                     String response;
                     if (!isKeyValid){
                         response = Commands.setResponseCommand("Out of array");
