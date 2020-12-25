@@ -48,7 +48,7 @@ public class ProxyServer {
         }
     }
     private static void removeDead(){
-        store.removeIf();
+        store.removeIf(Info::isDead);
     }
     public static void main(String[] args){
         store = new ArrayList();

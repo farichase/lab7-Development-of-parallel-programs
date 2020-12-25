@@ -46,6 +46,6 @@ public class Info {
         this.heartBeat = heartBeat;
     }
     public boolean isDead(){
-        return this.heartBeat +
+        return this.heartBeat + 5000 < System.currentTimeMillis();
     }
 }
