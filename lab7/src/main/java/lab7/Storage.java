@@ -8,6 +8,7 @@ import org.zeromq.ZMsg;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 
 public class Storage {
@@ -23,6 +24,7 @@ public class Storage {
         ZContext context = new ZContext();
         ZMQ.Socket dealer = context.createSocket(SocketType.DEALER);
         dealer.connect(ADDR);
+        Scanner in = new Scanner(System.in);
         int start = Integer.parseInt(args[0]);
         int end = Integer.parseInt(args[1]);
         long heartBeat = System.currentTimeMillis() + 5000;
