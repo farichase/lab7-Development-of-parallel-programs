@@ -19,6 +19,7 @@ public class ProxyServer {
     public static List<Info> store;
     public static Socket clientSocket;
     public static Socket storageSocket;
+    private static long TIMEOUT = 5000;
 
     private static boolean sendGetReq(Integer key){
         Iterator iterator = store.iterator();
@@ -52,9 +53,9 @@ public class ProxyServer {
         Poller items = context.createPoller(2);
         items.register(clientSocket, 1);
         items.register(storageSocket, 1);
-
-        for (; !Thread.currentThread().isInterrupted(); ){
-            items.poll(5000);
+        long time = System.currentTimeMillis();
+        while (items.poll(TIMEOUT) != -1){
+            if (System.currentTimeMillis() - time >= TIMEOUT)
             ZMsg msg;
             if (items.pollin(0)){
                 msg = ZMsg.recvMsg(clientSocket);
