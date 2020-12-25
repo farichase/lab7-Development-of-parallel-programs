@@ -10,6 +10,7 @@ import org.zeromq.ZMsg;
 import zmq.ZMQ;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -56,7 +57,8 @@ public class ProxyServer {
         long time = System.currentTimeMillis();
         while (items.poll(TIMEOUT) != -1){
             if (System.currentTimeMillis() - time >= TIMEOUT){
-
+                Collections.shuffle(store);
+                time = System.currentTimeMillis();
             }
             ZMsg msg;
             if (items.pollin(0)){
