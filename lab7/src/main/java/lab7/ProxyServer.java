@@ -17,6 +17,7 @@ import java.util.List;
 public class ProxyServer {
     public static final String ADDR1 = "tcp://localhost:8080";
     public static final String ADDR2 = "tcp://localhost:9000";
+    public static final String SPACE = " ";
     public static List<Info> store;
     public static Socket clientSocket;
     public static Socket storageSocket;
@@ -94,7 +95,7 @@ public class ProxyServer {
                 msg = ZMsg.recvMsg(storageSocket);
                 ZFrame addr = msg.unwrap();
                 String message = new String(addr.getData(), ZMQ.CHARSET);
-                String[] split = message.split(" ");
+                String[] split = message.split(SPACE);
                 String id = split[1];
                 String com = new String(msg.getLast().getData(), ZMQ.CHARSET);
                 Commands.CommandType type = Commands.getCommandType(com);
