@@ -25,8 +25,8 @@ public class Storage {
         dealer.connect(ADDR);
         int start = Integer.parseInt(args[0]);
         int end = Integer.parseInt(args[1]);
-        sendConnectCommand(dealer, start, end);
         long heartBeat = System.currentTimeMillis() + 5000;
+        sendConnectCommand(dealer, start, end);
         while(!Thread.currentThread().isInterrupted()){
             ZMsg msg = ZMsg.recvMsg(dealer, false);
             if (msg != null) {
