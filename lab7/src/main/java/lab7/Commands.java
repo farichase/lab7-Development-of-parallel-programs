@@ -23,7 +23,8 @@ public class Commands {
         GET,
         SET,
         NOTIFY,
-        CONNECT
+        CONNECT,
+        RESPONSE
     }
     public static String[] splitCommand(String com){
         return com.split(" ");

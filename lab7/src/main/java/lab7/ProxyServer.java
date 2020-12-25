@@ -94,8 +94,8 @@ public class ProxyServer {
                 if (type == Commands.CommandType.NOTIFY){
                     updateHeartBeat(id);
                 }
-                if (type == ){
-
+                if (type == Commands.CommandType.RESPONSE){
+                    msg.send(clientSocket);
                 }
 
 
