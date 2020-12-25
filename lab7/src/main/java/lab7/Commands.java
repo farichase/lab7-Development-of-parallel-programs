@@ -7,11 +7,11 @@ import java.util.regex.Pattern;
 
 public class Commands {
     private static final Pattern PUT_P = Pattern.compile("^PUT \\d+ \\d+$", 2);
-    private static final String CONNECT = "connect";
-    private static final String RESPONSE = "response";
-    private static final String GET = "put";
-    private static final String NOTIFY = "notify";
-    private static final String EXIT = "exit";
+    private static final Pattern CONNECT_P = "connect";
+    private static final Pattern RESPONSE = "response";
+    private static final Pattern GET = "put";
+    private static final Pattern NOTIFY = "notify";
+    private static final Pattern EXIT = "exit";
     public static String setConnectCommand(int start, int end){
         return "CONNECT" + start + " " + end;
     }
