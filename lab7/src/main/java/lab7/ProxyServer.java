@@ -22,7 +22,7 @@ public class ProxyServer {
 
     private static boolean sendGetReq(Integer key){
         Iterator iterator = store.iterator();
-        Info info = null;
+        Info info;
         do {
             if (iterator.hasNext()) {
                 info = (Info)iterator.next();
@@ -92,6 +92,9 @@ public class ProxyServer {
                     store.add(new Info(id, addr, range.getKey(), range.getValue(), System.currentTimeMillis()));
                 }
                 if (type == Commands.CommandType.NOTIFY){
+                    updateHeartBeat(id);
+                }
+                if (type == ){
 
                 }
 
