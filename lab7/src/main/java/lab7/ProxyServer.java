@@ -47,6 +47,9 @@ public class ProxyServer {
             }
         }
     }
+    private static void removeDead(){
+        store.removeIf();
+    }
     public static void main(String[] args){
         store = new ArrayList();
         ZContext context = new ZContext();
@@ -57,12 +60,8 @@ public class ProxyServer {
         Poller items = context.createPoller(2);
         items.register(clientSocket, 1);
         items.register(storageSocket, 1);
-        long time = System.currentTimeMillis();
-        while (items.poll(TIMEOUT) != -1){
-            if (System.currentTimeMillis() - time >= TIMEOUT){
-                Collections.shuffle(store);
-                time = System.currentTimeMillis();
-            }
+        for (; !Thread.currentThread().isInterrupted(); removeDead()){
+            items.poll(5000);
             ZMsg msg;
             if (items.pollin(CLIENT_SOCKET_NUMBER)){
                 msg = ZMsg.recvMsg(clientSocket);
