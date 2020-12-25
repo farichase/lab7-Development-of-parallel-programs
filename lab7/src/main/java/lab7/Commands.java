@@ -7,8 +7,8 @@ import java.util.regex.Pattern;
 
 public class Commands {
     private static final Pattern PUT_P = Pattern.compile("^PUT \\d+ \\d+$", 2);
-    private static final Pattern CONNECT_P = Pattern.compile("^PUT \\d+ \\d+$", 2);
-    private static final Pattern RESPONSE_P = Pattern.compile("^PUT \\d+ \\d+$", 2);
+    private static final Pattern CONNECT_P = Pattern.compile("^CONNECT \\d+ \\d+$", 2);
+    private static final Pattern RESPONSE_P = Pattern.compile("^RESPONSE \\d+ \\d+$", 2);
     private static final Pattern GET_P = Pattern.compile("^PUT \\d+ \\d+$", 2);
     private static final Pattern NOTIFY_P = Pattern.compile("^PUT \\d+ \\d+$", 2);
     private static final Pattern EXIT_P = Pattern.compile("^PUT \\d+ \\d+$", 2);
