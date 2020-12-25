@@ -80,7 +80,7 @@ public class ProxyServer {
                     key = Commands.getKey(com);
                     isKeyValid = sendGetReq(key);
                     String response;
-                    if (!isKeyValid){
+                    if (isKeyValid){
                         response = Commands.setResponseCommand("Out of array");
                     } else {
                         response = Commands.setResponseCommand("Well done");
