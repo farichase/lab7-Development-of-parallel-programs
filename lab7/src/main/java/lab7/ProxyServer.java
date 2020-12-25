@@ -39,8 +39,10 @@ public class ProxyServer {
     private static boolean sendPutReq(int key, ZMsg msg){
         boolean isKeyValid = false;
         Iterator iterator = store.iterator();
+        System.out.println(store.size());
         while(iterator.hasNext()){
             Info info = (Info)iterator.next();
+            System.out.println(info.getStart() + " " + info.getEnd());
             if (info.getStart() <= key && key <= info.getEnd()){
                 info.getAddress().send(storageSocket, 130);
                 msg.send(storageSocket, false);
