@@ -33,6 +33,15 @@ public class ProxyServer {
         info.getAddress().send(storageSocket, 130);
         return true;
     }
+    private static void updateHeartBeat(String id){
+        Iterator iterator = store.iterator();
+        while(iterator.hasNext()){
+            Info info = (Info) iterator.next();
+            if (info.getId().equals(id)){
+                info.setHeartBeat(System.currentTimeMillis());
+            }
+        }
+    }
     public static void main(String[] args){
         store = new ArrayList();
         ZContext context = new ZContext();
@@ -85,6 +94,7 @@ public class ProxyServer {
                 if (type == Commands.CommandType.NOTIFY){
 
                 }
+
 
             }
         }
