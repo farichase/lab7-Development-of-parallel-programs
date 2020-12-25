@@ -63,7 +63,7 @@ public class ProxyServer {
                 time = System.currentTimeMillis();
             }
             ZMsg msg;
-            if (items.pollin(0)){
+            if (items.pollin(CLIENT_SOCKET_NUMBER)){
                 msg = ZMsg.recvMsg(clientSocket);
                 String com = new String(msg.getLast().getData(), ZMQ.CHARSET);
                 Commands.CommandType type = Commands.getCommandType(com);
@@ -90,7 +90,7 @@ public class ProxyServer {
                     responseMsg.send(clientSocket);
                 }
             }
-            if (items.pollin(1)){
+            if (items.pollin(STORAGE_SOCKET_NUMBER)){
                 msg = ZMsg.recvMsg(storageSocket);
                 ZFrame addr = msg.unwrap();
                 String id = new String(addr.getData(), ZMQ.CHARSET);
