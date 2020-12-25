@@ -49,5 +49,7 @@ public class Storage {
             heartBeat = System.currentTimeMillis() + 5000;
             sendNotifyCommand(dealer);
         }
+        context.destroySocket(dealer);
+        context.destroy();
     }
 }
