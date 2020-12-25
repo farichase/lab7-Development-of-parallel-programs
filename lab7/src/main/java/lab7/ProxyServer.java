@@ -15,14 +15,14 @@ import java.util.Iterator;
 import java.util.List;
 
 public class ProxyServer {
-    public static String ADDR1 = "tcp://localhost:8080";
-    public static String ADDR2 = "tcp://localhost:9000";
+    public static final String ADDR1 = "tcp://localhost:8080";
+    public static final String ADDR2 = "tcp://localhost:9000";
     public static List<Info> store;
     public static Socket clientSocket;
     public static Socket storageSocket;
-    private static long TIMEOUT = 5000;
-    private static int CLIENT_SOCKET_NUMBER = 0;
-    private static int STORAGE_SOCKET_NUMBER = 1;
+    private static final long TIMEOUT = 5000;
+    private static final int CLIENT_SOCKET_NUMBER = 0;
+    private static final int STORAGE_SOCKET_NUMBER = 1;
 
     private static boolean sendGetReq(Integer key){
         Iterator iterator = store.iterator();
