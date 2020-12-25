@@ -36,6 +36,19 @@ public class ProxyServer {
         info.getAddress().send(storageSocket, 130);
         return true;
     }
+    private static boolean sendPutReq(int key, ZMsg msg){
+        boolean isKeyValid = false;
+        Iterator iterator = store.iterator();
+        while(iterator.hasNext()){
+            Info info = (Info)iterator.next();
+            if (info.getStart() <= key && key <= info.getEnd()){
+                info.getAddress().send(storageSocket, 130);
+                msg.send(storageSocket, false);
+                isKeyValid = true;
+            }
+        }
+        return isKeyValid;
+    }
     private static void updateHeartBeat(String id){
         Iterator iterator = store.iterator();
         while(iterator.hasNext()){
@@ -78,7 +91,7 @@ public class ProxyServer {
                 }
                 if (type == Commands.CommandType.PUT) {
                     key = Commands.getKey(com);
-                    isKeyValid = sendGetReq(key);
+                    isKeyValid = sendPutReq(key, msg);
                     String response;
                     if (!isKeyValid){
                         response = Commands.setResponseCommand("Out of array");
