@@ -82,12 +82,15 @@ public class ProxyServer {
                 if (type == Commands.CommandType.PUT) {
                     key = Commands.getKey(com);
                     isKeyValid = sendGetReq(key);
+                    String response;
                     if (!isKeyValid){
-                        msg.getLast().reset(Commands.setResponseCommand("Out of array"));
+                        response = Commands.setResponseCommand("Out of array");
                     } else {
-                        msg.getLast().reset(Commands.setResponseCommand("Well done"));
+                        response = Commands.setResponseCommand("Well done");
                     }
                     ZMsg responseMsg = new ZMsg();
+                    responseMsg.add(new ZFrame(response));
+                    responseMsg.wrap(msg.getFirst());
                     responseMsg.send(clientSocket);
                 }
             }
@@ -102,11 +105,9 @@ public class ProxyServer {
                 if (type == Commands.CommandType.CONNECT){
                     Pair<Integer, Integer> range = Commands.getKeyValue(com);
                     store.add(new Info(id, addr, range.getKey(), range.getValue(), System.currentTimeMillis()));
-                }
-                if (type == Commands.CommandType.NOTIFY){
+                } else if (type == Commands.CommandType.NOTIFY){
                     updateHeartBeat(id);
-                }
-                if (type == Commands.CommandType.RESPONSE){
+                } else if (type == Commands.CommandType.RESPONSE){
                     msg.send(clientSocket);
                 }
 
