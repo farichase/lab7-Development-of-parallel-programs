@@ -21,6 +21,8 @@ public class ProxyServer {
     public static Socket clientSocket;
     public static Socket storageSocket;
     private static long TIMEOUT = 5000;
+    private static int CLIENT_SOCKET_NUMBER = 0;
+    private static int STORAGE_SOCKET_NUMBER = 1;
 
     private static boolean sendGetReq(Integer key){
         Iterator iterator = store.iterator();
