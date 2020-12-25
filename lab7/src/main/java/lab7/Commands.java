@@ -5,6 +5,10 @@ import javafx.util.Pair;
 
 public class Commands {
     private static String GET = "get";
+    private static String CONNECT = "connect";
+    private static String RESPONSE = "response";
+    private static String SET = "set";
+    private static String NOTIFY = "notify";
     public static String setConnectCommand(int start, int end){
         return "CONNECT" + start + " " + end;
     }
@@ -18,6 +22,13 @@ public class Commands {
         if (com.toLowerCase().contains(GET)) {
             return CommandType.GET;
         }
+        if (com.toLowerCase().contains(SET)){
+            return CommandType.SET;
+        }
+        if (com.toLowerCase().contains(NOTIFY)){
+            return CommandType.NOTIFY;
+        }
+        if
     }
     public enum CommandType {
         GET,

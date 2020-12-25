@@ -60,16 +60,16 @@ public class ProxyServer {
                 msg = ZMsg.recvMsg(clientSocket);
                 String com = new String(msg.getLast().getData(), ZMQ.CHARSET);
                 Commands.CommandType type = Commands.getCommandType(com);
-                Integer key;
-                Boolean isKeyValid;
+                int key;
+                boolean isKeyValid;
                 if (type == Commands.CommandType.GET){
                     key = Commands.getKey(com);
                     isKeyValid = sendGetReq(key);
                     if (!isKeyValid){
                         msg.getLast().reset(Commands.setResponseCommand("Out of array"));
+                        msg.send(clientSocket);
                     }
-                    msg.getLast().reset(Commands.setResponseCommand());
-                    msg.send(clientSocket);
+
                 }
                 if (type == Commands.CommandType.SET) {
                     key = Commands.getKey(com);
@@ -88,7 +88,7 @@ public class ProxyServer {
                 ZFrame addr = msg.unwrap();
                 String id = new String(addr.getData(), ZMQ.CHARSET);
                 String com = new String(msg.getLast().getData(), ZMQ.CHARSET);
-                Commands.CommandType type = Commands.getCommandType(com)
+                Commands.CommandType type = Commands.getCommandType(com);
                 if (type == Commands.CommandType.CONNECT){
                     Pair<Integer, Integer> range = Commands.getKeyValue(com);
                     store.add(new Info(id, addr, range.getKey(), range.getValue(), System.currentTimeMillis()));
