@@ -54,7 +54,7 @@ public class Commands {
     }
     public static Integer getKey(String com){
         String[] comParts = splitCommand(com);
-        return Integer.parseInt(comParts[2]);
+        return Integer.parseInt(comParts[1]);
     }
     public static Pair<Integer, Integer> getKeyValue(String com){
         String[] comParts = splitCommand(com);
