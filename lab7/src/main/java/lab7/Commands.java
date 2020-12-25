@@ -49,10 +49,10 @@ public class Commands {
     }
     public static Integer getKey(String com){
         String[] comParts = splitCommand(com);
-        return Integer.parseInt(comParts[1]);
+        return Integer.parseInt(comParts[2]);
     }
     public static Pair<Integer, Integer> getKeyValue(String com){
         String[] comParts = splitCommand(com);
-        return new Pair(Integer.parseInt(comParts[1]), Integer.parseInt(comParts[2]));
+        return new Pair(Integer.parseInt(comParts[2]), Integer.parseInt(comParts[3]));
     }
 }

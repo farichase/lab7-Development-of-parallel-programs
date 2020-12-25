@@ -93,7 +93,9 @@ public class ProxyServer {
             if (items.pollin(STORAGE_SOCKET_NUMBER)){
                 msg = ZMsg.recvMsg(storageSocket);
                 ZFrame addr = msg.unwrap();
-                String id = new String(addr.getData(), ZMQ.CHARSET);
+                String message = new String(addr.getData(), ZMQ.CHARSET);
+                String[] split = message.split(" ");
+                String id = split[1];
                 String com = new String(msg.getLast().getData(), ZMQ.CHARSET);
                 Commands.CommandType type = Commands.getCommandType(com);
                 if (type == Commands.CommandType.CONNECT){
