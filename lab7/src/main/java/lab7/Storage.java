@@ -11,7 +11,7 @@ import java.util.Map;
 
 
 public class Storage {
-    private static String ADDR = "tcp://localhost:9000";
+    private static final String ADDR = "tcp://localhost:9000";
     private static void sendConnectCommand(ZMQ.Socket dealer, int start, int end){
         dealer.send(Commands.setConnectCommand(start, end), 0);
     }

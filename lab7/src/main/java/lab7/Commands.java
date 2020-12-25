@@ -4,11 +4,11 @@ package lab7;
 import javafx.util.Pair;
 
 public class Commands {
-    private static String GET = "get";
-    private static String CONNECT = "connect";
-    private static String RESPONSE = "response";
-    private static String SET = "set";
-    private static String NOTIFY = "notify";
+    private static final String GET = "get";
+    private static final String CONNECT = "connect";
+    private static final String RESPONSE = "response";
+    private static final String SET = "set";
+    private static final String NOTIFY = "notify";
     public static String setConnectCommand(int start, int end){
         return "CONNECT" + start + " " + end;
     }
