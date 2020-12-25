@@ -3,11 +3,13 @@ package lab7;
 
 import javafx.util.Pair;
 
+import java.util.regex.Pattern;
+
 public class Commands {
-    private static final String GET = "get";
+    private static final Pattern PUT_P = Pattern.compile("^PUT \\d+ \\d+$", 2);
     private static final String CONNECT = "connect";
     private static final String RESPONSE = "response";
-    private static final String PUT = "put";
+    private static final String GET = "put";
     private static final String NOTIFY = "notify";
     private static final String EXIT = "exit";
     public static String setConnectCommand(int start, int end){
@@ -23,7 +25,7 @@ public class Commands {
         if (com.toLowerCase().contains(GET)) {
             return CommandType.GET;
         }
-        if (com.toLowerCase().contains(PUT)){
+        if (PUT_P.matcher(com).find()){
             return CommandType.PUT;
         }
         if (com.toLowerCase().contains(NOTIFY)){
