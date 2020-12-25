@@ -10,7 +10,6 @@ import org.zeromq.ZMsg;
 import zmq.ZMQ;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -99,6 +98,7 @@ public class ProxyServer {
                 String message = new String(addr.getData(), ZMQ.CHARSET);
                 String[] split = message.split(SPACE);
                 String id = split[1];
+                System.out.println(id);
                 String com = new String(msg.getLast().getData(), ZMQ.CHARSET);
                 Commands.CommandType type = Commands.getCommandType(com);
                 if (type == Commands.CommandType.CONNECT){
