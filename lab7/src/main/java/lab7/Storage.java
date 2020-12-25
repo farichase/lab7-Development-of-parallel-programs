@@ -25,8 +25,8 @@ public class Storage {
         ZMQ.Socket dealer = context.createSocket(SocketType.DEALER);
         dealer.connect(ADDR);
         Scanner in = new Scanner(System.in);
-        int start = Integer.parseInt(args[0]);
-        int end = Integer.parseInt(args[1]);
+        int start = in.nextInt();
+        int end = in.nextInt();;
         long heartBeat = System.currentTimeMillis() + 5000;
         sendConnectCommand(dealer, start, end);
         while(!Thread.currentThread().isInterrupted()){
