@@ -28,14 +28,21 @@ public class Commands {
         if (com.toLowerCase().contains(NOTIFY)){
             return CommandType.NOTIFY;
         }
-        if
+        if (com.toLowerCase().contains(CONNECT)){
+            return CommandType.CONNECT;
+        }
+        if (com.toLowerCase().contains(RESPONSE)){
+            return CommandType.RESPONSE;
+        }
+        return CommandType.INVALID;
     }
     public enum CommandType {
         GET,
         SET,
         NOTIFY,
         CONNECT,
-        RESPONSE
+        RESPONSE,
+        INVALID
     }
     public static String[] splitCommand(String com){
         return com.split(" ");
