@@ -38,7 +38,7 @@ public class Storage {
                     msg.getLast().reset(Commands.setResponseCommand(value == null ? "null " : Integer.toString(value)));
                     msg.send(dealer);
                 }
-                if (type == Commands.CommandType.SET){
+                if (type == Commands.CommandType.PUT){
                     Pair<Integer, Integer> setPar = Commands.getKeyValue(com);
                     storage.put(setPar.getKey(), setPar.getValue());
                     msg.destroy();
