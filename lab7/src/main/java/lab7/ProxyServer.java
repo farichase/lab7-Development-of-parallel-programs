@@ -79,6 +79,8 @@ public class ProxyServer {
                     } else {
                         msg.getLast().reset(Commands.setResponseCommand("Well done"));
                     }
+                    ZMsg responseMsg = new ZMsg();
+                    responseMsg.send(clientSocket);
                 }
             }
             if (items.pollin(1)){
