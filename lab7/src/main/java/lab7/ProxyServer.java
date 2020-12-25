@@ -55,7 +55,9 @@ public class ProxyServer {
         items.register(storageSocket, 1);
         long time = System.currentTimeMillis();
         while (items.poll(TIMEOUT) != -1){
-            if (System.currentTimeMillis() - time >= TIMEOUT)
+            if (System.currentTimeMillis() - time >= TIMEOUT){
+
+            }
             ZMsg msg;
             if (items.pollin(0)){
                 msg = ZMsg.recvMsg(clientSocket);
