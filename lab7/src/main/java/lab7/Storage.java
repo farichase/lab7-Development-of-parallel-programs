@@ -26,7 +26,7 @@ public class Storage {
         dealer.connect(ADDR);
         Scanner in = new Scanner(System.in);
         int start = in.nextInt();
-        int end = in.nextInt();;
+        int end = in.nextInt();
         long heartBeat = System.currentTimeMillis() + 5000;
         sendConnectCommand(dealer, start, end);
         while(!Thread.currentThread().isInterrupted()){
@@ -37,7 +37,13 @@ public class Storage {
                 if (type == Commands.CommandType.GET) {
                     Integer key = Commands.getKey(com);
                     Integer value = storage.get(key);
-                    msg.getLast().reset(Commands.setResponseCommand(value == null ? "null " : Integer.toString(value)));
+                    String response;
+                    if (value == null){
+                        response = "null";
+                    } else {
+                        response = Integer.toString(value);
+                    }
+                    msg.getLast().reset(Commands.setResponseCommand(response));
                     msg.send(dealer);
                 }
                 if (type == Commands.CommandType.PUT){
