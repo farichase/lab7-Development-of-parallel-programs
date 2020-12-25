@@ -9,6 +9,7 @@ public class Commands {
     private static final String RESPONSE = "response";
     private static final String PUT = "put";
     private static final String NOTIFY = "notify";
+    private static final String EXIT = "exit";
     public static String setConnectCommand(int start, int end){
         return "CONNECT" + start + " " + end;
     }
@@ -34,6 +35,9 @@ public class Commands {
         if (com.toLowerCase().contains(RESPONSE)){
             return CommandType.RESPONSE;
         }
+        if (com.toLowerCase().contains(EXIT)){
+            return CommandType.EXIT;
+        }
         return CommandType.INVALID;
     }
     public enum CommandType {
@@ -42,7 +46,8 @@ public class Commands {
         NOTIFY,
         CONNECT,
         RESPONSE,
-        INVALID
+        INVALID,
+        EXIT
     }
     public static String[] splitCommand(String com){
         return com.split(" ");

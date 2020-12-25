@@ -112,6 +112,9 @@ public class ProxyServer {
 
             }
         }
+        context.destroySocket(clientSocket);
+        context.destroySocket(storageSocket);
+        context.destroy();
 
     }
 }
