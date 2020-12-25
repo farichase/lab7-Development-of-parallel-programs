@@ -23,7 +23,7 @@ public class ProxyServer {
     private static final int CLIENT_SOCKET_NUMBER = 0;
     private static final int STORAGE_SOCKET_NUMBER = 1;
 
-    private static boolean sendGetReq(Integer key){
+    private static boolean sendGetReq(Integer key, ZMsg msg){
         Iterator iterator = store.iterator();
         Info info;
         do {
@@ -34,15 +34,14 @@ public class ProxyServer {
             }
         } while (info.getStart() > key || key > info.getEnd());
         info.getAddress().send(storageSocket, 130);
+        msg.send(storageSocket, false);
         return true;
     }
     private static boolean sendPutReq(int key, ZMsg msg){
         boolean isKeyValid = false;
         Iterator iterator = store.iterator();
-        System.out.println(store.size());
         while(iterator.hasNext()){
             Info info = (Info)iterator.next();
-            System.out.println(info.getStart() + " " + info.getEnd());
             if (info.getStart() <= key && key <= info.getEnd()){
                 info.getAddress().send(storageSocket, 130);
                 msg.send(storageSocket, false);
@@ -84,7 +83,7 @@ public class ProxyServer {
                 boolean isKeyValid;
                 if (type == Commands.CommandType.GET){
                     key = Commands.getKey(com);
-                    isKeyValid = sendGetReq(key);
+                    isKeyValid = sendGetReq(key, msg);
                     if (!isKeyValid){
                         msg.getLast().reset(Commands.setResponseCommand("Out of array"));
                         msg.send(clientSocket);
@@ -93,10 +92,10 @@ public class ProxyServer {
                 }
                 if (type == Commands.CommandType.PUT) {
                     key = Commands.getKey(com);
-                    isKeyValid = sendPutReq(key, msg);
+                    isKeyValid = sendGetReq(key, msg);
                     String response;
                     if (!isKeyValid){
-                        response = Commands.setResponseCommand(isKeyValid + "Out of array");
+                        response = Commands.setResponseCommand("Out of array");
                     } else {
                         response = Commands.setResponseCommand("Well done");
                     }
@@ -110,7 +109,6 @@ public class ProxyServer {
                 msg = ZMsg.recvMsg(storageSocket);
                 ZFrame addr = msg.unwrap();
                 String id = new String(addr.getData(), ZMQ.CHARSET);
-                System.out.println(id);
                 String com = new String(msg.getLast().getData(), ZMQ.CHARSET);
                 Commands.CommandType type = Commands.getCommandType(com);
                 if (type == Commands.CommandType.CONNECT){

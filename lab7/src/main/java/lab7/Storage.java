@@ -34,6 +34,7 @@ public class Storage {
             if (msg != null) {
                 String com = new String(msg.getLast().getData(), ZMQ.CHARSET);
                 Commands.CommandType type = Commands.getCommandType(com);
+                System.out.println(com);
                 if (type == Commands.CommandType.GET) {
                     Integer key = Commands.getKey(com);
                     Integer value = storage.get(key);
