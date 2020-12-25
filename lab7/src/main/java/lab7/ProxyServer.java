@@ -78,7 +78,7 @@ public class ProxyServer {
                     }
 
                 }
-                if (type == Commands.CommandType.SET) {
+                if (type == Commands.CommandType.PUT) {
                     key = Commands.getKey(com);
                     isKeyValid = sendGetReq(key);
                     if (!isKeyValid){

@@ -7,7 +7,7 @@ public class Commands {
     private static final String GET = "get";
     private static final String CONNECT = "connect";
     private static final String RESPONSE = "response";
-    private static final String SET = "set";
+    private static final String PUT = "put";
     private static final String NOTIFY = "notify";
     public static String setConnectCommand(int start, int end){
         return "CONNECT" + start + " " + end;
@@ -22,8 +22,8 @@ public class Commands {
         if (com.toLowerCase().contains(GET)) {
             return CommandType.GET;
         }
-        if (com.toLowerCase().contains(SET)){
-            return CommandType.SET;
+        if (com.toLowerCase().contains(PUT)){
+            return CommandType.PUT;
         }
         if (com.toLowerCase().contains(NOTIFY)){
             return CommandType.NOTIFY;
@@ -38,7 +38,7 @@ public class Commands {
     }
     public enum CommandType {
         GET,
-        SET,
+        PUT,
         NOTIFY,
         CONNECT,
         RESPONSE,
