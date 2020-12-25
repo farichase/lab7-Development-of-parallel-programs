@@ -45,4 +45,7 @@ public class Info {
     public void setHeartBeat(long heartBeat){
         this.heartBeat = heartBeat;
     }
+    public boolean isDead(){
+        return this.heartBeat + 
+    }
 }
